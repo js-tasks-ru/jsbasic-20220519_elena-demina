@@ -1,3 +1,7 @@
 function camelize(str) {
-  // ваш код...
+  return str
+    .split("")
+    .map((n, i, arr) => (arr[i - 1] == "-" ? n.toUpperCase() : n))
+    .filter((n) => n != "-")
+    .join("");
 }

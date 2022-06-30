@@ -1,5 +1,5 @@
 export default class StepSlider {
-  constructor({ steps, value = 0 }) {
+  constructor({ steps, value }) {
     this.steps = steps;
     this.value = value;
     this.elem = this.createSlider();
@@ -15,7 +15,7 @@ export default class StepSlider {
     let sliderContainer = this.createElement(`
       <div class="slider">
         <div class="slider__thumb" style="left: 50%;">
-          <span class="slider__value">0</span>
+          <span class="slider__value">${this.value}</span>
         </div>
         <div class="slider__progress" style="width: 50%;"></div>
         <div class="slider__steps">

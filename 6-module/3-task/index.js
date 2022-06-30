@@ -1,4 +1,4 @@
-import createElement from '../../assets/lib/create-element.js';
+import createElement from "../../assets/lib/create-element.js";
 
 export default class Carousel {
   constructor(slides) {
@@ -16,7 +16,7 @@ export default class Carousel {
         <img src="/assets/images/icons/angle-left-icon.svg" alt="icon">
       </div>
       <div class="carousel__inner">
-        ${slides.map(this.createSlide).join('')}
+        ${slides.map(this.createSlide).join("")}
       </div>
     </div>
     `);
@@ -35,7 +35,9 @@ export default class Carousel {
 
     carouselRightButton.addEventListener("click", () => {
       counter++;
-      carouselInner.style.transform = `translateX(-${this.elem.offsetWidth * counter}px)`;
+      carouselInner.style.transform = `translateX(-${
+        this.elem.offsetWidth * counter
+      }px)`;
       if (counter >= carouselSlides.length - 1) {
         carouselRightButton.style.display = "none";
         carouselLeftButton.style.display = "block";
@@ -47,19 +49,20 @@ export default class Carousel {
 
     carouselLeftButton.addEventListener("click", () => {
       counter--;
-      carouselInner.style.transform = `translateX(-${this.elem.offsetWidth * counter}px)`;
+      carouselInner.style.transform = `translateX(-${
+        this.elem.offsetWidth * counter
+      }px)`;
       if (counter <= 0) {
         carouselLeftButton.style.display = "none";
         carouselRightButton.style.display = "";
       }
     });
 
-    carouselAddProductButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-
+    carouselAddProductButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
         const myEvent = new CustomEvent("product-add", {
           detail: event.target.closest("div.carousel__slide").dataset.id,
-          bubbles: true
+          bubbles: true,
         });
         this.elem.dispatchEvent(myEvent);
       });
@@ -71,7 +74,9 @@ export default class Carousel {
   createSlide(slide) {
     return `
       <div class="carousel__slide" data-id="${slide.id}">
-        <img src="/assets/images/carousel/${slide.image}" class="carousel__img" alt="slide">
+        <img src="/assets/images/carousel/${
+          slide.image
+        }" class="carousel__img" alt="slide">
         <div class="carousel__caption">
           <span class="carousel__price">€${slide.price.toFixed(2)}</span>
           <div class="carousel__title">${slide.name}</div>
@@ -79,6 +84,6 @@ export default class Carousel {
             <img src="/assets/images/icons/plus-icon.svg" alt="icon">
           </button>
         </div>
-      </div>`
+      </div>`;
   }
 }
